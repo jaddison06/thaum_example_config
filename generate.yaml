@@ -1,0 +1,98 @@
+use_https: false
+api_url: localhost:8080
+
+enums:
+  AnimalType:
+    - Dog
+    - Cat
+    - Horse
+    - Octopus
+  FoodType:
+    - Bone
+    - Fish
+    - Grape
+    - Ketamine
+
+classes:
+  AnimalBase:
+    uuid: String
+    type: AnimalType
+    name: String
+  AuthorisationRequest:
+    username: String
+    passwordHash: String
+  User:
+    uuid: String
+    username: String
+    passwordHash: String
+    salt: String
+    authLevel: AuthLevel
+  UsersInfo:
+    users: Map<String, User>
+  ChangePasswordRequest:
+    username: String
+    passwordHash: String
+    newSalt: String
+
+extensions:
+  AnimalBase: Animal
+
+typedefs:
+  Pet: Animal
+
+exceptions:
+  - Out of stock
+  - Animal died
+
+auth:
+  in: AuthorisationRequest
+  out: String
+  levels:
+    - Staff
+    - Admin
+
+endpoints:
+  getAvailableAnimalStock:
+    out: Map<AnimalType, int>
+  addAnimalStock:
+    in: Map<AnimalType, int>
+    authLevel: Staff
+  getAnimalByUuid:
+    in: String
+    out: Animal
+  buyAnimal:
+    out: String
+  
+  getSaltForUser:
+    handledBy: auth
+    in: String
+    out: String
+  getAllUsers:
+    authLevel: Admin
+    handledBy: auth
+    out: Map<String, User>
+  getUserByUuid:
+    authLevel: Admin
+    handledBy: auth
+    in: String
+    out: User
+  addUser:
+    authLevel: Admin
+    handledBy: auth
+    in: User
+  editUser:
+    authLevel: Admin
+    handledBy: auth
+    in: User
+  deleteUser:
+    authLevel: Admin
+    handledBy: auth
+    in: String
+  changeUserPassword:
+    authLevel: Custom
+    handledBy: auth
+    in: ChangePasswordRequest
+  getCurrentUser:
+    handledBy: auth
+    forwardToken: true
+    out: User
