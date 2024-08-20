@@ -71,7 +71,7 @@ endpoints:
     in: String
     out: Animal
   buyAnimal:
-    out: String
+    out: Animal
   
   getSaltForUser:
     handledBy: auth
