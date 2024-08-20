@@ -71,6 +71,7 @@ endpoints:
     in: String
     out: Animal
   buyAnimal:
+    in: AnimalType
     out: Animal
   
   getSaltForUser:
