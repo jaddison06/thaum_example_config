@@ -50,7 +50,9 @@ exceptions:
   - Unknown UUID while deleting user
   - Tried to add user with non empty UUID
   - Unknown username while changing password
-
+  - Not logged in
+  - Username is empty
+  - Password is empty
 auth:
   in: AuthorisationRequest
   out: String
