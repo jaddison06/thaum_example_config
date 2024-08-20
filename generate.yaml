@@ -12,6 +12,12 @@ enums:
     - Fish
     - Grape
     - Ketamine
+  StaffAction:
+    - AddAnimalStock
+    - AddUser
+    - EditUserPassword
+    - EditUserAuthLevel
+    - DeleteUser
 
 classes:
   AnimalBase:
@@ -72,7 +78,7 @@ endpoints:
     out: Animal
   buyAnimal:
     in: AnimalType
-    out: Animal
+    out: Pet
   
   getSaltForUser:
     handledBy: auth
