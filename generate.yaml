@@ -54,6 +54,7 @@ exceptions:
   - Incorrect credentials
   - Login period timed out
   - Username already exists
+  - Unknown username while getting user
   - Unknown UUID while getting user
   - Unknown UUID while deleting user
   - Tried to add user with non empty UUID
@@ -89,6 +90,11 @@ endpoints:
     authLevel: Admin
     handledBy: auth
     out: Map<String, User>
+  getUserByUsername:
+    authLevel: Admin
+    handledBy: auth
+    in: String
+    out: User
   getUserByUuid:
     authLevel: Admin
     handledBy: auth
