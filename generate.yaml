@@ -43,6 +43,7 @@ typedefs:
 exceptions:
   - Out of stock
   - Animal died
+  - Unknown UUID while getting animal
   - Incorrect credentials
   - Login period timed out
   - Username already exists
